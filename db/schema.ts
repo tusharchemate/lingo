@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { integer, pgTable, serial, text } from "drizzle-orm/pg-core";
+import { integer, pgEnum, pgTable, serial, text } from "drizzle-orm/pg-core";
 
 export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
@@ -63,12 +63,13 @@ export const lessonRelations = relations(lessons, ({ one, many }) => ({
     references: [units.id],
   }),
 }));
+export const challengesEnum = pgEnum("type", ["SELECT", "ASSIST"]);
 
 export const challenges = pgTable("challenges", {
   id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  unitId: integer("unit_id")
-    .references(() => units.id, { onDelete: "cascade" })
+  lessonId: integer("lesson_id")
+    .references(() => lessons.id, { onDelete: "cascade" })
     .notNull(),
-  order: integer("order").notNull(),
+  type: challengesEnum("type").notNull(),
+  question: text("question").notNull(),
 });
