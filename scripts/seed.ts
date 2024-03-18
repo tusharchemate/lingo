@@ -58,6 +58,21 @@ const main = async () => {
       }
     ]);
 
+    await db.insert(schema.lessons).values([
+      {
+        id:1,
+        unitId:1,
+        title:'Nouns',
+        order:1,
+      },
+      {
+        id:2,
+        unitId:1,
+        title:'Verbs',
+        order:2,
+      }
+    ]);
+
 
     console.log("Seeding Finished!");
   } catch (err) {
