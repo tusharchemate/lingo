@@ -73,6 +73,53 @@ const main = async () => {
       }
     ]);
 
+    //challenges 
+
+    await db.insert(schema.challenges).values([
+      {
+        id:1,
+        lessonId:1,
+        type:'ASSIST',
+        order:1,
+        question:'Which on of the "the man"?',
+      },
+      {
+        id:2,
+        lessonId:2,
+        type:'SELECT',
+        order:2,
+        question:'Who',
+      },
+    ]);
+
+    //challeges Option 
+    await db.insert(schema.challengeOptions).values([
+      {
+        id:1,
+        challengeId:1,
+        imageSrc:'/man.svg',
+        correct:true,
+        audioSrc:'/es_man.mp3',
+        text:'el homre',
+      },
+      {
+        id:2,
+        challengeId:1,
+        imageSrc:'/women.svg',
+        correct:false,
+        audioSrc:'/es_women.mp3',
+        text:'la mujer',
+      },
+      {
+        id:3,
+        challengeId:1,
+        imageSrc:'/robot.svg',
+        correct:false,
+        audioSrc:'/es_robot.mp3',
+        text:'el robot',
+      },
+    ]);
+
 
     console.log("Seeding Finished!");
   } catch (err) {
