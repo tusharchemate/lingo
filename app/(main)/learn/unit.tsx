@@ -42,7 +42,7 @@ const Unit = ({
               id={lesson.id}
               index={lesson.id}
               totalCount={lessons.length - 1}
-              current={isCurrent}
+              current={true || isCurrent}
               percentage={activeLessonPercentage}
             />
           );
