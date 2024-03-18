@@ -79,14 +79,14 @@ const main = async () => {
       {
         id:1,
         lessonId:1,
-        type:'ASSIST',
+        type:'SELECT',
         order:1,
         question:'Which on of the "the man"?',
       },
       {
         id:2,
         lessonId:2,
-        type:'SELECT',
+        type:'ASSIST',
         order:2,
         question:'Who',
       },
