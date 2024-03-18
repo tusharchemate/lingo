@@ -37,8 +37,27 @@ const main = async () => {
     console.log("Seeding Database...");
     await db.delete(schema.courses);
     await db.delete(schema.userProgress);
+    await db.delete(schema.units);
+    await db.delete(schema.lessons);
+
+    await db.delete(schema.challenges);
+    await db.delete(schema.challengeOptions);
+    await db.delete(schema.challengeProgress);
+
 
     await db.insert(schema.courses).values(languages);
+
+    // added units 
+    await db.insert(schema.units).values([
+      {
+        id:1,
+        courseId:1,
+        title:'Units 1',
+        description:'Learn the basics of Indain',
+        order:1,
+      }
+    ]);
+
 
     console.log("Seeding Finished!");
   } catch (err) {
