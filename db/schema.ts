@@ -22,11 +22,12 @@ export const units = pgTable("units", {
   order: integer("order").notNull(),
 });
 
-const unitsRelations = relations(units, ({ many, one }) => ({
+export const unitsRelations = relations(units, ({ many, one }) => ({
   course: one(courses, {
     fields: [units.courseId],
     references: [courses.id],
   }),
+  lessons: many(lessons),
 }));
 
 export const userProgress = pgTable("user_progress", {
@@ -47,10 +48,27 @@ export const userProgressRelations = relations(userProgress, ({ one }) => ({
   }),
 }));
 
+export const lessons = pgTable("lessons", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  unitId: integer("unit_id")
+    .references(() => units.id, { onDelete: "cascade" })
+    .notNull(),
+  order: integer("order").notNull(),
+});
 
-export const lessons = pgTable('lessons', {
-  id:serial('id').primaryKey(),
-  title: text('title').notNull(),
-  unitId: integer('unit_id').references(()=> units.id, {onDelete:'cascade'}).notNull(),
-  order:integer('order').notNull(),
+export const lessonRelations = relations(lessons, ({ one, many }) => ({
+  unit: one(units, {
+    fields: [lessons.unitId],
+    references: [units.id],
+  }),
+}));
+
+export const challenges = pgTable("challenges", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  unitId: integer("unit_id")
+    .references(() => units.id, { onDelete: "cascade" })
+    .notNull(),
+  order: integer("order").notNull(),
 });
