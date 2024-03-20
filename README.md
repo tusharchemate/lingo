@@ -1,7 +1,7 @@
 
 `Lingo Link` - https://lingo-iota.vercel.app/
 
-This is a repository for a "Build a Duolingo Clone With Nextjs, React, Drizzle, Stripe (2024).
+Build a Duolingo Clone With Next.js, React, Drizzle, Stripe (2024).
 
 ## Key Features:
 
