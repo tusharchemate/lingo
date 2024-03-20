@@ -33,8 +33,13 @@ const Sidebar = ({ className }: Props) => {
         </div>
       </Link>
       <div className="flex flex-col gap-y-2 flex-1">
-        {sidebarItems?.map((item)=> (
-          <SidebaItem label={item.label} iconSrc={item.iconSrc} href={item.href} />
+        {sidebarItems?.map((item) => (
+          <SidebaItem
+            key={item.label}
+            label={item.label}
+            iconSrc={item.iconSrc}
+            href={item.href}
+          />
         ))}
       </div>
       <ClerkLoading>

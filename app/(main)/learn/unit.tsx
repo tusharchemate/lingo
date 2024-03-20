@@ -38,6 +38,7 @@ const Unit = ({
 
           return (
             <LessonButton
+              key={lesson.id}
               locked={isLocked}
               id={lesson.id}
               index={lesson.id}
